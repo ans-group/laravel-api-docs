@@ -4,7 +4,7 @@
 
 An extension to Spatie's laravel-data package which generates OpenAPI specs for quick and easy documentation of your REST API.
 
-The format of the generated documentation is very flexible and can be easy redefined to suit your request/response structure.
+The format of the generated documentation is very flexible and can be easily redefined to suit your request/response structure.
 
 ## Installation
 
@@ -32,7 +32,7 @@ Out of the box, data-docs supports 5 basic endpoint types and conforms to larave
 
 The index endpoint is for endpoints that return a paginated list, for example:
 
-```
+```php
 use UKFast\LaravelDataDocs\Endpoints;
 use App\Data\PetData;
 use App\Models\Pet;
@@ -51,7 +51,7 @@ class PetController
 
 The create endpoint is for endpoints that create a new resource.
 
-```
+```php
 class PetController
 {
     #[Endpoints\Create(PetData::class)
@@ -65,7 +65,7 @@ class PetController
 
 The show endpoint shows an individual resource
 
-```
+```php
 class PetController
 {
     #[Endpoints\Show(PetData::class)
@@ -79,7 +79,7 @@ class PetController
 
 The update endpoint updates a resource
 
-```
+```php
 class PetController
 {
     #[Endpoints\Update(PetData::class)
@@ -93,7 +93,7 @@ class PetController
 
 The destroy endpoint deletes a resource
 
-```
+```php
 class PetController
 {
     #[Endpoints\Destroy(PetData::class)
@@ -109,7 +109,7 @@ Your API likely has its own format different to the defaults provided by this pa
 
 Here's an example of a custom index endpoint:
 
-```
+```php
 namespace App\Docs;
 
 use UKFast\LaravelDataDocs\Endpoint;
