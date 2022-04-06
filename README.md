@@ -1,6 +1,8 @@
 <img src="https://images.ukfast.co.uk/logos/ukfast/441x126_transparent_strapline.png" alt="UKFast Logo" width="350px" height="auto" />
 
-# Laravel API Docs
+# Laravel API Docs [Beta]
+
+*Package is still in beta and is not ready for production use*
 
 Automatically generate API documentation for your laravel API's based off your application routes and handy PHP 8 attributes.
 
