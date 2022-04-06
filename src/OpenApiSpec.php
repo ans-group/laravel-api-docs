@@ -1,6 +1,6 @@
 <?php
 
-namespace UKFast\LaravelDataDocs;
+namespace UKFast\LaravelApiDocs;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
@@ -128,6 +128,7 @@ class OpenApiSpec
                 if ($method->getName() != $action) {
                     continue;
                 }
+                
                 foreach ($method->getAttributes() as $attr) {
                     $endpoint = $attr->newInstance();
                     if ($endpoint instanceof Endpoint) {

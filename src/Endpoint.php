@@ -1,6 +1,6 @@
 <?php
 
-namespace UKFast\LaravelDataDocs;
+namespace UKFast\LaravelApiDocs;
 
 use Illuminate\Routing\Route;
 use stdClass;
@@ -9,18 +9,13 @@ abstract class Endpoint
 {
     protected Route $route;
 
-    protected $args;
-
     protected $contentType = 'application/json';
 
     protected $required = true;
 
     protected $statusCode = 200;
 
-    public function __construct(...$args)
-    {
-        $this->args = $args;
-    }
+    protected $referencedObjects = [];
 
     public function setRoute(Route $route)
     {
@@ -44,7 +39,7 @@ abstract class Endpoint
 
     public function dataObjects()
     {
-        return [];
+        return $this->referencedObjects;
     }
 
     public function toSpec()
@@ -62,14 +57,14 @@ abstract class Endpoint
 
         if ($response) {
             $spec['responses'][$this->statusCode]['content'] = [
-                $this->contentType => ['schema' => $this->determineType($response)],
+                $this->contentType => ['schema' => Schema::determineType($response)],
             ];
         }
 
         if ($request) {
             $spec['requestBody'] = [
                 'required' => $this->required,
-                'content' => [$this->contentType => ['schema' => $this->determineType($request)]],
+                'content' => [$this->contentType => ['schema' => Schema::determineType($request)]],
             ];
         }
 
@@ -78,12 +73,8 @@ abstract class Endpoint
 
     protected function ref($class)
     {
+        $this->referencedObjects[] = $class;
         return new Ref($class);
-    }
-
-    protected function noContent()
-    {
-        $this->contentType = 'application/json';
     }
 
     protected function bodyNotRequired()
@@ -94,58 +85,5 @@ abstract class Endpoint
     protected function setStatusCode($code)
     {
         $this->statusCode = $code;
-    }
-
-    protected function determineType($value)
-    {
-        if (is_array($value) || $value instanceof stdClass) {
-            if (!$value instanceof stdClass && is_numeric(array_keys($value)[0])) {
-                $examples = [];
-                foreach ($value as $item) {
-                    if ($item instanceof Ref) {
-                        continue;
-                    }
-                    $examples[] = $item;
-                }
-                $spec = [
-                    'type' => 'array',
-                    'items' => $this->determineType($value[0]),
-                ];
-
-                if (!empty($examples)) {
-                    $spec['example'] = $examples;
-                }
-
-                return $spec;
-            }
-
-            $properties = [];
-            foreach ($value as $key => $subValue) {
-                $properties[$key] = $this->determineType($subValue);
-            }
-
-            return [
-                'type' => 'object',
-                'properties' => $properties,
-            ];
-        }
-
-        $type = null;
-        if (is_string($value)) {
-            $type = 'string';
-        } else if (is_integer($value)) {
-            $type = 'integer';
-        } else if ($value instanceof Ref) {
-            return ['$ref' => $value->url()];
-        } else if (is_bool($value)) {
-            $type = 'boolean';
-        } else {
-            throw new \Exception("Could not determine type");
-        }
-
-        return [
-            'type' => $type,
-            'example' => $value,
-        ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace UKFast\LaravelDataDocs\Properties;
+namespace UKFast\LaravelApiDocs\Properties;
 
 use Attribute;
 

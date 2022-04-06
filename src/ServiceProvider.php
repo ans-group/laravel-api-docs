@@ -1,6 +1,6 @@
 <?php
 
-namespace UKFast\LaravelDataDocs;
+namespace UKFast\LaravelApiDocs;
 
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 

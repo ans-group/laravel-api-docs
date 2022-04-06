@@ -1,8 +1,8 @@
 <?php
 
-namespace UKFast\LaravelDataDocs\Endpoints;
+namespace UKFast\LaravelApiDocs\Endpoints;
 
-use UKFast\LaravelDataDocs\Endpoint;
+use UKFast\LaravelApiDocs\Endpoint;
 use Attribute;
 
 #[Attribute]

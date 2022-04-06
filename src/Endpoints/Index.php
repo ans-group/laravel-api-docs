@@ -1,17 +1,20 @@
 <?php
 
-namespace UKFast\LaravelDataDocs\Endpoints;
+namespace UKFast\LaravelApiDocs\Endpoints;
 
-use UKFast\LaravelDataDocs\Endpoint;
+use UKFast\LaravelApiDocs\Endpoint;
 use Attribute;
 
 #[Attribute]
 class Index extends Endpoint
 {
+    public function __construct(protected $resource)
+    {}
+
     public function response()
     {
         return [
-            'data' => [$this->ref($this->args[0])],
+            'data' => [$this->ref($this->resource)],
             'links' => [
                 [
                     'url' => $this->route->uri() . '?page=1',
@@ -48,10 +51,5 @@ class Index extends Endpoint
                 'total' => 2,
             ]
         ];
-    }
-
-    public function dataObjects()
-    {
-        return [$this->args[0]];
     }
 }

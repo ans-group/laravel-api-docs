@@ -1,17 +1,19 @@
 <?php
 
-namespace UKFast\LaravelDataDocs\Endpoints;
+namespace UKFast\LaravelApiDocs\Endpoints;
 
-use UKFast\LaravelDataDocs\Endpoint;
-use UKFast\LaravelDataDocs\Ref;
+use UKFast\LaravelApiDocs\Endpoint;
 use Attribute;
 
 #[Attribute]
 class Create extends Endpoint
 {
+    public function __construct(protected $resource)
+    {}
+
     public function request()
     {
-        return new Ref($this->args[0]);
+        return $this->ref($this->resource);
     }
 
     public function response()

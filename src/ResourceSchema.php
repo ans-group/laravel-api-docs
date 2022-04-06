@@ -1,6 +1,6 @@
 <?php
 
-namespace UKFast\LaravelDataDocs;
+namespace UKFast\LaravelApiDocs;
 
 interface ResourceSchema
 {
