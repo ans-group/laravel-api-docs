@@ -29,7 +29,7 @@ Whilst you can easily define your own endpoint types, the package comes with som
 The index endpoint is for endpoints that return a paginated list, for example:
 
 ```php
-use UKFast\LaravelDataDocs\Endpoints;
+use UKFast\LaravelApiDocs\Endpoints;
 use App\Data\PetData;
 use App\Models\Pet;
 
@@ -48,7 +48,7 @@ class PetController
 The create endpoint is for endpoints that create a new resource.
 
 ```php
-use UKFast\LaravelDataDocs\Endpoints;
+use UKFast\LaravelApiDocs\Endpoints;
 use App\Data\PetData;
 use App\Models\Pet;
 
@@ -66,7 +66,7 @@ class PetController
 The show endpoint shows an individual resource
 
 ```php
-use UKFast\LaravelDataDocs\Endpoints;
+use UKFast\LaravelApiDocs\Endpoints;
 use App\Data\PetData;
 use App\Models\Pet;
 
@@ -84,7 +84,7 @@ class PetController
 The update endpoint updates a resource
 
 ```php
-use UKFast\LaravelDataDocs\Endpoints;
+use UKFast\LaravelApiDocs\Endpoints;
 use App\Data\PetData;
 use App\Models\Pet;
 
@@ -102,7 +102,7 @@ class PetController
 The destroy endpoint deletes a resource
 
 ```php
-use UKFast\LaravelDataDocs\Endpoints;
+use UKFast\LaravelApiDocs\Endpoints;
 
 class PetController
 {
@@ -122,7 +122,7 @@ Here's an example of a custom index endpoint:
 ```php
 namespace App\Docs;
 
-use UKFast\LaravelDataDocs\Endpoint;
+use UKFast\LaravelApiDocs\Endpoint;
 use Attribute;
 
 #[Attribute]
