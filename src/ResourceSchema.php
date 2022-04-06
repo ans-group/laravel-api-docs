@@ -5,5 +5,5 @@ namespace UKFast\LaravelApiDocs;
 interface ResourceSchema
 {
     public function toSchema($class);
-    public function name($class);
+    public function docsName($class);
 }

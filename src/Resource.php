@@ -46,7 +46,7 @@ class Resource implements ResourceSchema
         return $schema;
     }
 
-    public function name($class)
+    public function docsName($class)
     {
         $parts = explode('\\', $class);
         return end($parts);
