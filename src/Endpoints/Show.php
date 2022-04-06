@@ -8,10 +8,13 @@ use Attribute;
 #[Attribute]
 class Show extends Endpoint
 {
+    public function __construct(protected $resource)
+    {}
+
     public function response()
     {
         return [
-            'data' => $this->ref($this->args[0]),
+            'data' => $this->ref($this->resource),
             'meta' => (object) [],
         ];
     }
