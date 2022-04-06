@@ -32,7 +32,7 @@ The index endpoint is for endpoints that return a paginated list, for example:
 
 ```php
 use UKFast\LaravelApiDocs\Endpoints;
-use App\Data\PetData;
+use App\Data\PetResource;
 use App\Models\Pet;
 
 class PetController
@@ -51,7 +51,7 @@ The create endpoint is for endpoints that create a new resource.
 
 ```php
 use UKFast\LaravelApiDocs\Endpoints;
-use App\Data\PetData;
+use App\Data\PetResource;
 use App\Models\Pet;
 
 class PetController
@@ -69,7 +69,7 @@ The show endpoint shows an individual resource
 
 ```php
 use UKFast\LaravelApiDocs\Endpoints;
-use App\Data\PetData;
+use App\Data\PetResource;
 use App\Models\Pet;
 
 class PetController
@@ -87,7 +87,7 @@ The update endpoint updates a resource
 
 ```php
 use UKFast\LaravelApiDocs\Endpoints;
-use App\Data\PetData;
+use App\Data\PetResource;
 use App\Models\Pet;
 
 class PetController
