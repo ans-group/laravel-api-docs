@@ -1,5 +1,5 @@
 {
-    "name": "ukfast/laravel-api-docs",
+    "name": "ans-group/laravel-api-docs",
     "description": "A library for documenting your laravel REST apis",
     "type": "library",
     "license": "MIT",
